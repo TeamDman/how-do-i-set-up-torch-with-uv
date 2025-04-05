@@ -1,0 +1,24 @@
+[project]
+name = "how-do-i-set-up-torch-with-uv"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    # Numpy is included here to suppress a warning
+    # G:\repos\how-do-i-set-up-torch-with-uv\.venv\lib\site-packages\torch\_subclasses\functional_tensor.py:275: UserWarning: Failed to initialize NumPy: No module named 'numpy' (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\torch\csrc\utils\tensor_numpy.cpp:81.)
+    #   cpu = _conversion_method_template(device=torch.device("cpu"))
+    "numpy>=2.2.4",
+    "torch>=2.6.0",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch" }
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[dependency-groups]
+dev = ["ipykernel>=6.29.5"]
